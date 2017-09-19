@@ -19,7 +19,9 @@ app.get("/", function (request, response) {
 
 app.get("/unix-timestamp/:date", function(request, response){
   var url_body = url.parse(request.url);
-  response.json({"unix": url_body["path"]});
+  var date_args = [];
+  date_args = request.params.date.split(' ');
+  response.json({"unix": request.para});
 });
 
 app.get("/dreams", function (request, response) {
