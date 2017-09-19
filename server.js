@@ -17,7 +17,7 @@ app.get("/", function (request, response) {
    response.sendFile(__dirname + '/views/index.html');
 });
 
-app.get("/unix-timestamp/:month:date:year", function(request, response){
+app.get("/unix-timestamp/:date", function(request, response){
   var url_body = url.parse(request.url);
   response.json({"unix": url_body["path"]});
 });
