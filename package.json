@@ -17,8 +17,7 @@
     "node": "8.x"
   },
   "repository": {
-    //"url": "https://glitch.com/edit/#!/welcome-project"
-    "url": "https://unix-timestamp.glitch.com/"
+    "url": "https://glitch.com/edit/#!/welcome-project"
   },
   "license": "MIT",
   "keywords": [
