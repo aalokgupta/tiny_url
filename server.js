@@ -18,8 +18,8 @@ app.get("/", function (request, response) {
 });
 
 app.get("/unix-timestamp", function(request, response){
-  var url_body = ""
-  response.json({"unix": "timestamp"});
+  var url_body = url.parse(request.url);
+  response.json({"unix": url_body});
 });
 
 app.get("/dreams", function (request, response) {
