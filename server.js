@@ -4,7 +4,7 @@
 // init project
 var express = require('express');
 var url = require('url');
-var moment = require('moment');
+//var moment = require('moment');
 var app = express();
 
 // we've started you off with Express, 
@@ -68,7 +68,7 @@ function find_unix_time_from_given_date(date_args){
 }
 function find_natural_date_from_unix_timestamp(date_args){
   var t = new Date(date_args[0]);
-  var format = t.format('dd-mm-yyyy');
+  var format = moment.unix(t).format('dd-mm-yyyy');
   return format;
 }
 Date.prototype.getUnixTime = function() { return this.getTime()/1000|0 };
