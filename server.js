@@ -21,9 +21,14 @@ app.get("/unix-timestamp/:date", function(request, response){
   var url_body = url.parse(request.url);
   var date_args = [];
   date_args = request.params.date.split(' ');
-  if(date_args)
-  response.json({"unix": find_unix_time_from_given_date(date_args),
-                "Natural Date": date_args[1] + ' ' + date_args[0] + ' ' +date_args[2]});
+  if(date_args.length > 1){
+    response.json({"unix": find_unix_time_from_given_date(date_args),
+                "Natural Date": date_args[1] + ' ' + date_args[0] + ' ' +date_args[2]});  
+  }
+  else{
+    response.json({"unix-timestamp": date_args[0],
+                "Natural Date": find_natural_date_from_unix_timestamp()});  
+  }
 });
 
 app.get("/dreams", function (request, response) {
@@ -58,7 +63,9 @@ function find_unix_time_from_given_date(date_args){
   var parsedUnixTime = new Date(day + ' ' + month + ' ' +  year).getUnixTime();
   // var parsedUnixTime = new Date('25 december 1995').getUnixTime();
   return parsedUnixTime;
-  
 
+}
+function find_natural_date_from_unix_timestamp(){
+  
 }
 Date.prototype.getUnixTime = function() { return this.getTime()/1000|0 };
