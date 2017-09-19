@@ -21,11 +21,12 @@ app.get("/unix-timestamp/:date", function(request, response){
   var url_body = url.parse(request.url);
   var date_args = [];
   date_args = request.params.date.split(' ');
+  response.json({"timestamp": request.params.date});
   if(date_args.length > 1){
     response.json({"unix": find_unix_time_from_given_date(date_args),
                 "Natural Date": date_args[1] + ' ' + date_args[0] + ' ' +date_args[2]});  
   }
-  else{
+  else if(date_args.length === 1){
     response.json({"unix-timestamp": date_args[0],
                 "Natural Date": find_natural_date_from_unix_timestamp(date_args)});  
   }
@@ -66,9 +67,13 @@ function find_unix_time_from_given_date(date_args){
 }
 
 function find_natural_date_from_unix_timestamp(date_args){
+  
   var t = new Date(date_args[0]);
-  var format = t.get
-  return format;
+  return t.prototype.toDateString();
+//   var date  = t.getDate();
+//   var month = t.getMonth();
+//   var year = t.getFullYear();
+  
 }
 
 Date.prototype.getUnixTime = function() { return this.getTime()/1000|0 };
