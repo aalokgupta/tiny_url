@@ -63,11 +63,12 @@ function find_unix_time_from_given_date(date_args){
   var parsedUnixTime = new Date(day + ' ' + month + ' ' +  year).getUnixTime();
   // var parsedUnixTime = new Date('25 december 1995').getUnixTime();
   return parsedUnixTime;
-
 }
+
 function find_natural_date_from_unix_timestamp(date_args){
   var t = new Date(date_args[0]);
-  var format = moment.unix(t).format('dd-mm-yyyy');
+  var format = t.get
   return format;
 }
+
 Date.prototype.getUnixTime = function() { return this.getTime()/1000|0 };
