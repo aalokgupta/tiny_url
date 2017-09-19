@@ -17,9 +17,9 @@ app.get("/", function (request, response) {
    response.sendFile(__dirname + '/views/index.html');
 });
 
-app.get("/unix-timestamp", function(request, response){
+app.get("/unix-timestamp/:month", function(request, response){
   var url_body = url.parse(request.url);
-  response.json({"unix": url_body});
+  response.json({"unix": request.param.);
 });
 
 app.get("/dreams", function (request, response) {
