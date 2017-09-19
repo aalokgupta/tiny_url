@@ -22,7 +22,8 @@ app.get("/unix-timestamp/:date", function(request, response){
   var date_args = [];
   date_args = request.params.date.split(' ');
   
-  response.json({"unix": find_unix_time_from_given_date(date_args)});
+  response.json({"unix": find_unix_time_from_given_date(date_args),
+                "Natural Date": date_args[1] + ' ' + date_args[0] + ' ' +date_args[2]});
 });
 
 app.get("/dreams", function (request, response) {
