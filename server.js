@@ -17,22 +17,10 @@ app.get("/", function (request, response) {
    response.sendFile(__dirname + '/views/index.html');
 });
 
-app.get("/unix-timestamp/:date", function(request, response){
-  var url_body = url.parse(request.url);
-  var date_args = [];
-  date_args = request.params.date.split(' ');
-  if(date_args.length > 1){
-    response.json({"unix": find_unix_time_from_given_date(date_args),
-                "Natural Date": date_args[1] + ' ' + date_args[0] + ' ' +date_args[2]});  
-  }
-  else if(date_args.length === 1){
-    response.json({"unix-timestamp": date_args[0],
-                "Natural Date": find_natural_date_from_unix_timestamp(date_args)});  
-  }
-  else{
-    response.json({"unix-timestamp": 0,
-                "Natural Date": 0});  
-  }
+app.get("/new/:req_url", function(request, response){
+
+  var req_url = request.params["req_url"];
+  response.json({"URL": req_url});
 });
 
 app.get("/dreams", function (request, response) {
