@@ -20,10 +20,10 @@ app.get("/", function (request, response) {
 app.get("/new/*", function(request, response){
 
   var req_url = url.parse(request.url);
-  var tiny_url = req_url.pathname.substring(5, req_url.pathname.length); // removing "/new/" from pathname will give actual url
+  var actual_url = req_url.pathname.substring(5, req_url.pathname.length); // removing "/new/" from pathname will give actual url
 
-  tinyurl.shorten(tiny_url, function(res){
-    response.json({"tiny url" : res});
+  tinyurl.shorten(actual_url, function(res){
+    response.json({"Actual Url": actual_url, "tiny url" : res});
   });
 
 });
