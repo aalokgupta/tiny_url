@@ -19,13 +19,14 @@ app.get("/", function (request, response) {
 
 app.get("/new/:req_url", function(request, response){
 
-  var req_url = request.params;
-  var tiny_url;
+  var req_url = url.parse(request.url);
+  var tiny_url = request.params.req_url;
+
   // tinyurl.shorten(req_url, function(res){
   //   tiny_url = res;
   //   console.log("tiny_url");
   // });
-  response.json({"tiny url" : req_url});
+response.json({"tiny url" : req_ur});
 });
 
 app.get("/dreams", function (request, response) {
