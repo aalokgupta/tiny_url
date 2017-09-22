@@ -23,8 +23,9 @@ app.get("/new/:req_url", function(request, response){
   var tiny_url;
   tinyurl.shorten(req_url, function(res){
     tiny_url = res;
+    console.log("tiny_url");
   });
-  response.json({"tiny url" : tiny_url});
+  response.json({"tiny url" : req_url});
 });
 
 app.get("/dreams", function (request, response) {
