@@ -4,7 +4,7 @@
 // init project
 var express = require('express');
 var url = require('url');
-//var moment = require('moment');
+var tinyurl = require('tinyurl');
 var app = express();
 
 // we've started you off with Express, 
@@ -20,7 +20,11 @@ app.get("/", function (request, response) {
 app.get("/new/:req_url", function(request, response){
 
   var req_url = request.params["req_url"];
-  response.json({"URL": req_url});
+  var tiny_url;
+  tinyurl.shorten(req_url, function(res){
+    tiny_url = res;
+  });
+  response.json({"tiny url" : tiny_url});
 });
 
 app.get("/dreams", function (request, response) {
